@@ -1,2 +1,2 @@
 #Ignora el archivo tipo IPCH
-.ipch
+*.ipch
