@@ -179,6 +179,11 @@ void animate(void)
 	}
 }
 
+void playMusic() {
+	//Play Background music
+	PlaySound(TEXT("resources/Music/Background_Music.wav"), NULL, SND_LOOP);
+}
+
 void getResolution()
 {
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -568,6 +573,8 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		lightPosition.x++;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
 		lightPosition.x--;
+	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+		playMusic();
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
