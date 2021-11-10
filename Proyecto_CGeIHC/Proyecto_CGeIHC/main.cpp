@@ -181,11 +181,11 @@ void animate(void)
 
 void playMusic() {
 	//Play Background music
-	PlaySound(TEXT("resources/Music/Background_Music.wav"), NULL, SND_LOOP);
+	PlaySound(TEXT("resources/Music/Background_Music.wav"), NULL, SND_LOOP | SND_ASYNC);
 }
 
 void getResolution()
-{
+{	
 	const GLFWvidmode * mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 
 	SCR_WIDTH = mode->width;
@@ -303,6 +303,8 @@ int main()
 	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
+		
+
 		skyboxShader.setInt("skybox", 0);
 		
 		// per-frame time logic
