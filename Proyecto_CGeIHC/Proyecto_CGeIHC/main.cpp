@@ -413,7 +413,7 @@ int main()
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(100.0f, 0.0f, -20.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-450.0f, -1.75f, -450.0f));
 		model = glm::scale(model, glm::vec3(2.0f));
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);

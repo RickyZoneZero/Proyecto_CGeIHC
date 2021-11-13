@@ -1,31 +1,30 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 11.11.2021 21:00:12
+# File Created: 13.11.2021 11:22:20
 
-newmtl SpruceBranch
-	Ns 96.0784
-	Ni 1.5000
-	d 0.0000
-	Tr 1.0000
-	Tf 0.0000 0.0000 0.0000 
-	illum 2
-	Ka 0.0000 0.0000 0.0000
-	Kd 0.6400 0.6400 0.6400
-	Ks 0.0000 0.0000 0.0000
-	Ke 0.0000 0.0000 0.0000
-	map_Ka C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\resources\objects\Pino\Spruce branches.png
-	map_Kd C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\resources\objects\Pino\Spruce branches.png
-	map_d C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\resources\objects\Pino\Spruce branches.png
-
-newmtl SpruceTrunk
-	Ns 96.0784
+newmtl Hojas
+	Ns 10.0000
 	Ni 1.5000
 	d 1.0000
 	Tr 0.0000
 	Tf 1.0000 1.0000 1.0000 
 	illum 2
-	Ka 0.0000 0.0000 0.0000
-	Kd 0.6400 0.6400 0.6400
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
 	Ks 0.0000 0.0000 0.0000
 	Ke 0.0000 0.0000 0.0000
-	map_Ka C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\resources\objects\Pino\Spruce trunk.jpeg
-	map_Kd C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\resources\objects\Pino\Spruce trunk.jpeg
+	map_Ka Spruce_branches.png
+	map_Kd Spruce_branches.png
+
+newmtl Tronco
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka Spruce_trunk.jpeg
+	map_Kd Spruce_trunk.jpeg
