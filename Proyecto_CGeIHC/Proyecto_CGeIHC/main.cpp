@@ -269,6 +269,12 @@ int main()
 	Model piso("resources/objects/piso/piso.obj");
 	Model pino("resources/objects/Pino/Spruce.obj");
 	Model tren("resources/objects/Tren/toon_train.obj");
+	Model vias("resources/objects/Tren/Vias/railroad_track.obj");
+	Model hombre("resources/objects/Hombre/LegoMan.obj");
+	Model pescador("resources/objects/Pescador/Lego.obj");
+	Model pez("resources/objects/Pez/fish.obj");
+	Model canoa("resources/objects/Canoa/boat.obj");
+	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -412,11 +418,38 @@ int main()
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
-		model = glm::scale(model, glm::vec3(2.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.25f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		tren.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
+		staticShader.setMat4("model", model);
+		vias.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -250.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		staticShader.setMat4("model", model);
+		hombre.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(50.0f, -1.75f, -250.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		staticShader.setMat4("model", model);
+		canasta_baloncesto.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -350.0f));
+		staticShader.setMat4("model", model);
+		pescador.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(50.0f, -1.75f, -200.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		staticShader.setMat4("model", model);
+		canoa.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(90.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		staticShader.setMat4("model", model);
+		pez.Draw(staticShader);
 
 
 		// -------------------------------------------------------------------------------------------------------------------------
