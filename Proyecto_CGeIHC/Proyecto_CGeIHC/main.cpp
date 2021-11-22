@@ -82,7 +82,7 @@ float	incX = 0.0f,
 		rotInc = 0.0f,
 		giroMonitoInc = 0.0f;
 
-#define MAX_FRAMES 9
+#define MAX_FRAMES 12
 int i_max_steps = 60;
 int i_curr_steps = 0;
 typedef struct _frame
@@ -268,6 +268,7 @@ int main()
 	// -----------
 	Model piso("resources/objects/piso/piso.obj");
 	Model pino("resources/objects/Pino/Spruce.obj");
+	Model pinos("resources/objects/Pino/Pinos.obj");
 	Model tren("resources/objects/Tren/toon_train.obj");
 	Model ruedas_tren("resources/objects/Tren/wheels.obj");
 	Model vias("resources/objects/Tren/railroad_track.obj");
@@ -279,6 +280,7 @@ int main()
 	Model canoa("resources/objects/Canoa/boat.obj");
 	Model cania("resources/objects/Pescador/fishingRod.obj");
 	Model manivela("resources/objects/Pescador/manivela.obj");
+	Model rioCongelado("resources/objects/Rio/rio_congelado.obj");
 	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
 	Model botaDer("resources/objects/Personaje/bota.obj");
@@ -291,11 +293,8 @@ int main()
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
 
-	ModelAnim animacionPersonaje("resources/objects/Personaje1/PersonajeBrazo.dae");
-	animacionPersonaje.initShaders(animShader.ID);
-
-	ModelAnim ninja("resources/objects/ZombieWalk/ZombieWalk.dae");
-	ninja.initShaders(animShader.ID);
+	ModelAnim mujerPescando("resources/objects/Pescador/Pescadora.dae");
+	mujerPescando.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -374,7 +373,7 @@ int main()
 		
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje Animacion
+		// Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 		//Remember to activate the shader with the animation
 		animShader.use();
@@ -389,21 +388,14 @@ int main()
 		animShader.setVec3("light.direction", lightDirection);
 		animShader.setVec3("viewPos", camera.Position);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(1.2f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		animShader.setMat4("model", model);
-		animacionPersonaje.Draw(animShader);
-
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Segundo Personaje Animacion
+		// Personaje Animacion
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(40.3f, 1.75f, 0.3f)); // translate it down so it's at the center of the scene
-		model = glm::scale(model, glm::vec3(0.5f));	// it's a bit too big for our scene, so scale it down
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-335.0f, -1.75f, 350.0f)); 
+		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		ninja.Draw(animShader);
+		mujerPescando.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -422,6 +414,11 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-450.0f, -1.75f, -450.0f));
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, 0.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pinos.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -480,6 +477,10 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
 		manivela.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+		staticShader.setMat4("model", model);
+		rioCongelado.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Carro
