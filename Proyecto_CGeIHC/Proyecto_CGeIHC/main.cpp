@@ -209,7 +209,7 @@ void readFile() {
 
 	MyReadFile.read((char*)&temp, sizeof(temp));
 
-	for (int idx = 0; idx < arraySize; idx++)
+	for (int idx = 0; idx <= arraySize; idx++)
 	{
 		KeyFrame[idx].posX = temp[idx].posX;
 		KeyFrame[idx].posY = temp[idx].posY;
@@ -333,8 +333,20 @@ int main()
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
 
-	ModelAnim mujerPescando("resources/objects/Pescador/Pescadora.dae");
-	mujerPescando.initShaders(animShader.ID);
+	ModelAnim personaje_1("resources/objects/Personajes_Bailando/Personaje_1.dae");
+	personaje_1.initShaders(animShader.ID);
+
+	ModelAnim personaje_2("resources/objects/Personajes_Bailando/Personaje_2.dae");
+	personaje_2.initShaders(animShader.ID);
+
+	ModelAnim personaje_3("resources/objects/Personajes_Bailando/Personaje_3.dae");
+	personaje_3.initShaders(animShader.ID);
+
+	ModelAnim personaje_4("resources/objects/Personajes_Bailando/Personaje_4.dae");
+	personaje_4.initShaders(animShader.ID);
+
+	ModelAnim personaje_5("resources/objects/Personajes_Bailando/Personaje_5.dae");
+	personaje_5.initShaders(animShader.ID);
 
 	//Inicialización de KeyFrames
 	for (int i = 0; i < MAX_FRAMES; i++)
@@ -429,13 +441,33 @@ int main()
 		animShader.setVec3("viewPos", camera.Position);
 
 		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje Animacion
+		// Personajes de animación
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-335.0f, -1.75f, 350.0f)); 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-335.0f, -1.75f, 100.0f)); 
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		mujerPescando.Draw(animShader);
+		personaje_1.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-355.0f, -1.75f, 100.0f));
+		model = glm::scale(model, glm::vec3(0.15f));
+		animShader.setMat4("model", model);
+		personaje_2.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-375.0f, -1.75f, 100.0f));
+		model = glm::scale(model, glm::vec3(0.15f));
+		animShader.setMat4("model", model);
+		personaje_3.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-315.0f, -1.75f, 100.0f));
+		model = glm::scale(model, glm::vec3(0.15f));
+		animShader.setMat4("model", model);
+		personaje_4.Draw(animShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-295.0f, -1.75f, 100.0f));
+		model = glm::scale(model, glm::vec3(0.15f));
+		animShader.setMat4("model", model);
+		personaje_5.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
