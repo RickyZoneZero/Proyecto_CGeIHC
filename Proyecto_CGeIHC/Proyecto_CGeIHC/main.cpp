@@ -1,4 +1,7 @@
 ﻿/*Archivo de código correspondiente al proyecto de la asignatura de CGeIHC del semestre 2022-1
+* Hernández Zamora José Enrique
+* Jiménez Gutiérrez Miguel
+* Martínez Ortíz Carlos Daniel
 */
 #include <Windows.h>
 
@@ -23,6 +26,7 @@
 #include <model.h>
 #include <Skybox.h>
 #include <iostream>
+#include <fstream>
 
 //#pragma comment(lib, "winmm.lib")
 
@@ -61,8 +65,9 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 //float x = 0.0f;
 //float y = 0.0f;
 float	movAuto_x = 0.0f,
-		movAuto_z = 0.0f,
-		orienta = 0.0f;
+movAuto_z = 0.0f,
+orienta = 0.0f,
+movTren = 0.0f;
 bool	animacion = false,
 		recorrido1 = true,
 		recorrido2 = false,
@@ -103,7 +108,6 @@ int playIndex = 0;
 
 void saveFrame(void)
 {
-	//printf("frameindex %d\n", FrameIndex);
 	std::cout << "Frame Index = " << FrameIndex << std::endl;
 
 	KeyFrame[FrameIndex].posX = posX;
@@ -175,13 +179,49 @@ void animate(void)
 	//Vehículo
 	if (animacion)
 	{
-		movAuto_z += 3.0f;
+		movTren += 3.0f;
 	}
 }
 
 void playMusic() {
 	//Play Background music
 	PlaySound(TEXT("resources/Music/Background_Music.wav"), NULL, SND_LOOP | SND_ASYNC);
+}
+
+void writeFile() {
+
+	// Create and open a text file
+	ofstream MyFile("resources/animation_files/animation_one.txt");
+
+	// Write to the file
+	MyFile.write((char*)&KeyFrame, sizeof(KeyFrame));
+
+	// Close the file
+	MyFile.close();
+}
+
+void readFile() {
+	int arraySize = sizeof(KeyFrame) / sizeof(KeyFrame[0]);
+
+	// Read from the text file
+	ifstream MyReadFile("resources/animation_files/animation_one.txt");
+	FRAME temp[MAX_FRAMES];
+
+	MyReadFile.read((char*)&temp, sizeof(temp));
+
+	for (int idx = 0; idx < arraySize; idx++)
+	{
+		KeyFrame[idx].posX = temp[idx].posX;
+		KeyFrame[idx].posY = temp[idx].posY;
+		KeyFrame[idx].posZ = temp[idx].posZ;
+		cout << "KeyFrame: " << idx << endl;
+		cout << "Valor en X: " << KeyFrame[idx].posX << endl;
+		cout << "Valor en Y: " << KeyFrame[idx].posY << endl;
+		cout << "Valor en Z: " << KeyFrame[idx].posZ << endl;
+	}
+
+	// Close the file
+	MyReadFile.close();
 }
 
 void getResolution()
@@ -269,9 +309,9 @@ int main()
 	Model piso("resources/objects/piso/piso.obj");
 	Model pino("resources/objects/Pino/Spruce.obj");
 	Model pinos("resources/objects/Pino/Pinos.obj");
-	Model tren("resources/objects/Tren/toon_train.obj");
-	Model ruedas_tren("resources/objects/Tren/wheels.obj");
-	Model vias("resources/objects/Tren/railroad_track.obj");
+	Model tunel("resources/objects/Tunel/Tunnel.obj");
+	Model tren("resources/objects/Tren/train.obj");
+	Model vias("resources/objects/Tren/rails.obj");
 	Model hombre("resources/objects/Hombre/LegoMan.obj");
 	Model brazoDerecho("resources/objects/Hombre/BrazoDerechoLego.obj");
 	Model brazoIzquierdo("resources/objects/Hombre/BrazoIzquierdoLego.obj");
@@ -411,7 +451,7 @@ int main()
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-450.0f, -1.75f, -450.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-450.0f, -1.75f, -250.0f));
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);
 
@@ -420,18 +460,21 @@ int main()
 		staticShader.setMat4("model", model);
 		pinos.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-340.0f, -1.75f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		staticShader.setMat4("model", model);
+		tunel.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f - movTren, -1.75f, -450.0f));
+		tmp = model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
 		staticShader.setMat4("model", model);
 		tren.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		ruedas_tren.Draw(staticShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
 		staticShader.setMat4("model", model);
 		vias.Draw(staticShader);
 
@@ -607,7 +650,7 @@ int main()
 
 // process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
 // ---------------------------------------------------------------------------------------------------------
-void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
+void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
@@ -642,6 +685,10 @@ void my_input(GLFWwindow *window, int key, int scancode, int action, int mode)
 		lightPosition.x--;
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 		playMusic();
+	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+		writeFile();
+	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+		readFile();
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
