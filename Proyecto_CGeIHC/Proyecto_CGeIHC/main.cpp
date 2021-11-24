@@ -79,15 +79,17 @@ bool	animacion = false,
 float	posX = 0.0f,
 		posY = 0.0f,
 		posZ = 0.0f,
-		rotRodIzq = 0.0f,
-		giroMonito = 0.0f;
+		rotBrazoDer = 0.0f,
+		rotBrazoIzq = 0.0f,
+		giroTorso = 0.0f;
 float	incX = 0.0f,
 		incY = 0.0f,
 		incZ = 0.0f,
-		rotInc = 0.0f,
-		giroMonitoInc = 0.0f;
+		rotBrazoDerInc = 0.0f,
+		rotBrazoIzqInc = 0.0f,
+		giroTorsoInc = 0.0f;
 
-#define MAX_FRAMES 12
+#define MAX_FRAMES 7
 int i_max_steps = 60;
 int i_curr_steps = 0;
 typedef struct _frame
@@ -96,8 +98,9 @@ typedef struct _frame
 	float posX;		//Variable para PosicionX
 	float posY;		//Variable para PosicionY
 	float posZ;		//Variable para PosicionZ
-	float rotRodIzq;
-	float giroMonito;
+	float rotBrazoDer;
+	float rotBrazoIzq;
+	float giroTorso;
 
 }FRAME;
 
@@ -114,8 +117,9 @@ void saveFrame(void)
 	KeyFrame[FrameIndex].posY = posY;
 	KeyFrame[FrameIndex].posZ = posZ;
 
-	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	KeyFrame[FrameIndex].giroMonito = giroMonito;
+	KeyFrame[FrameIndex].rotBrazoDer = rotBrazoDer;
+	KeyFrame[FrameIndex].rotBrazoIzq = rotBrazoIzq;
+	KeyFrame[FrameIndex].giroTorso = giroTorso;
 
 	FrameIndex++;
 }
@@ -126,8 +130,9 @@ void resetElements(void)
 	posY = KeyFrame[0].posY;
 	posZ = KeyFrame[0].posZ;
 
-	rotRodIzq = KeyFrame[0].rotRodIzq;
-	giroMonito = KeyFrame[0].giroMonito;
+	rotBrazoDer = KeyFrame[0].rotBrazoDer;
+	rotBrazoIzq = KeyFrame[0].rotBrazoIzq;
+	giroTorso = KeyFrame[0].giroTorso;
 }
 
 void interpolation(void)
@@ -136,8 +141,9 @@ void interpolation(void)
 	incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
 	incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
 
-	rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
-	giroMonitoInc = (KeyFrame[playIndex + 1].giroMonito - KeyFrame[playIndex].giroMonito) / i_max_steps;
+	rotBrazoDerInc = (KeyFrame[playIndex + 1].rotBrazoDer - KeyFrame[playIndex].rotBrazoDer) / i_max_steps;
+	rotBrazoIzqInc = (KeyFrame[playIndex + 1].rotBrazoIzq - KeyFrame[playIndex].rotBrazoIzq) / i_max_steps;
+	giroTorsoInc = (KeyFrame[playIndex + 1].giroTorso - KeyFrame[playIndex].giroTorso) / i_max_steps;
 
 }
 
@@ -169,8 +175,9 @@ void animate(void)
 			posY += incY;
 			posZ += incZ;
 
-			rotRodIzq += rotInc;
-			giroMonito += giroMonitoInc;
+			rotBrazoDer += rotBrazoDerInc;
+			rotBrazoIzq += rotBrazoIzqInc;
+			giroTorso += giroTorsoInc;
 
 			i_curr_steps++;
 		}
@@ -195,7 +202,7 @@ void writeFile() {
 
 	// Write to the file
 	MyFile.write((char*)&KeyFrame, sizeof(KeyFrame));
-
+	cout << "Archivo escrito";
 	// Close the file
 	MyFile.close();
 }
@@ -209,20 +216,27 @@ void readFile() {
 
 	MyReadFile.read((char*)&temp, sizeof(temp));
 
-	for (int idx = 0; idx <= arraySize; idx++)
+	for (int idx = 0; idx < arraySize; idx++)
 	{
 		KeyFrame[idx].posX = temp[idx].posX;
 		KeyFrame[idx].posY = temp[idx].posY;
 		KeyFrame[idx].posZ = temp[idx].posZ;
-		cout << "KeyFrame: " << idx << endl;
-		cout << "Valor en X: " << KeyFrame[idx].posX << endl;
-		cout << "Valor en Y: " << KeyFrame[idx].posY << endl;
-		cout << "Valor en Z: " << KeyFrame[idx].posZ << endl;
+		KeyFrame[idx].rotBrazoDer = temp[idx].rotBrazoDer;
+		KeyFrame[idx].rotBrazoIzq = temp[idx].rotBrazoIzq;
+		KeyFrame[idx].giroTorso = temp[idx].giroTorso;
+
+		cout << "KeyFrame [" << idx << "].posX = " << temp[idx].posX << ";" << endl;
+		cout << "KeyFrame [" << idx << "].posY = " << temp[idx].posY << ";" << endl;
+		cout << "KeyFrame [" << idx << "].posZ = " << temp[idx].posZ << ";" << endl;
+		cout << "KeyFrame [" << idx << "].rotBrazoDer = " << temp[idx].rotBrazoDer << ";" << endl;
+		cout << "KeyFrame [" << idx << "].rotBrazoIzq = " << temp[idx].rotBrazoIzq << ";" << endl;
+		cout << "KeyFrame [" << idx << "].giroTorso = " << temp[idx].giroTorso << ";" << endl;
 	}
 
 	// Close the file
 	MyReadFile.close();
 }
+
 
 void getResolution()
 {	
@@ -312,7 +326,8 @@ int main()
 	Model tunel("resources/objects/Tunel/Tunnel.obj");
 	Model tren("resources/objects/Tren/train.obj");
 	Model vias("resources/objects/Tren/rails.obj");
-	Model hombre("resources/objects/Hombre/LegoMan.obj");
+	Model torsoHombre("resources/objects/Hombre/Torso.obj");
+	Model piernas("resources/objects/Hombre/Piernas.obj");
 	Model brazoDerecho("resources/objects/Hombre/BrazoDerechoLego.obj");
 	Model brazoIzquierdo("resources/objects/Hombre/BrazoIzquierdoLego.obj");
 	Model pescador("resources/objects/Pescador/Lego.obj");
@@ -323,13 +338,6 @@ int main()
 	Model rioCongelado("resources/objects/Rio/rio_congelado.obj");
 	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
-	Model botaDer("resources/objects/Personaje/bota.obj");
-	Model piernaDer("resources/objects/Personaje/piernader.obj");
-	Model piernaIzq("resources/objects/Personaje/piernader.obj");
-	Model torso("resources/objects/Personaje/torso.obj");
-	Model brazoDer("resources/objects/Personaje/brazoder.obj");
-	Model brazoIzq("resources/objects/Personaje/brazoizq.obj");
-	Model cabeza("resources/objects/Personaje/cabeza.obj");
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
 
@@ -347,16 +355,6 @@ int main()
 
 	ModelAnim personaje_5("resources/objects/Personajes_Bailando/Personaje_5.dae");
 	personaje_5.initShaders(animShader.ID);
-
-	//Inicialización de KeyFrames
-	for (int i = 0; i < MAX_FRAMES; i++)
-	{
-		KeyFrame[i].posX = 0;
-		KeyFrame[i].posY = 0;
-		KeyFrame[i].posZ = 0;
-		KeyFrame[i].rotRodIzq = 0;
-		KeyFrame[i].giroMonito = 0;
-	}
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -411,7 +409,7 @@ int main()
 		staticShader.setFloat("material_shininess", 32.0f);
 
 		glm::mat4 model = glm::mat4(1.0f);
-		glm::mat4 tmp = glm::mat4(1.0f);
+		glm::mat4 temporal = glm::mat4(1.0f);
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
 		glm::mat4 view = camera.GetViewMatrix();
@@ -447,27 +445,27 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-335.0f, -1.75f, 100.0f)); 
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		personaje_1.Draw(animShader);
+		//personaje_1.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-355.0f, -1.75f, 100.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		personaje_2.Draw(animShader);
+		//personaje_2.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-375.0f, -1.75f, 100.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		personaje_3.Draw(animShader);
+		//personaje_3.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-315.0f, -1.75f, 100.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		personaje_4.Draw(animShader);
+		//personaje_4.Draw(animShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-295.0f, -1.75f, 100.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		personaje_5.Draw(animShader);
+		//personaje_5.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -499,7 +497,7 @@ int main()
 		tunel.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f - movTren, -1.75f, -450.0f));
-		tmp = model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f));
 		staticShader.setMat4("model", model);
 		tren.Draw(staticShader);
@@ -510,28 +508,35 @@ int main()
 		staticShader.setMat4("model", model);
 		vias.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 400.0f));
+		//Hombre jugando baloncesto
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 5.25f + posY, 380.0f));
+		temporal = model = glm::rotate(model, glm::radians(giroTorso), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		hombre.Draw(staticShader);
+		torsoHombre.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 400.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f + posY, 380.0f));
+		staticShader.setMat4("model", model);
+		piernas.Draw(staticShader);
+
+		model = glm::translate(temporal, glm::vec3(-2.5f, 9.5f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotBrazoDer), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		brazoDerecho.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 400.0f));
+		model = glm::translate(temporal, glm::vec3(2.5f, 9.5f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotBrazoIzq), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		brazoIzquierdo.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 380.0f));
+		model = glm::scale(model, glm::vec3(0.8f));
+		staticShader.setMat4("model", model);
+		balon.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 450.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		canasta_baloncesto.Draw(staticShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 450.0f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.5f));
-		staticShader.setMat4("model", model);
-		balon.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
@@ -557,89 +562,7 @@ int main()
 		staticShader.setMat4("model", model);
 		rioCongelado.Draw(staticShader);
 
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Carro
-		// -------------------------------------------------------------------------------------------------------------------------
-		model = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(15.0f + movAuto_x, -1.0f, movAuto_z));
-		tmp = model = glm::rotate(model, glm::radians(orienta), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		staticShader.setMat4("model", model);
-		carro.Draw(staticShader);
-
-		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, 12.9f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq delantera
-
-		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, 12.9f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Der delantera
-
-		model = glm::translate(tmp, glm::vec3(-8.5f, 2.5f, -14.5f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Der trasera
-
-		model = glm::translate(tmp, glm::vec3(8.5f, 2.5f, -14.5f));
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
-		staticShader.setMat4("model", model);
-		llanta.Draw(staticShader);	//Izq trase
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Personaje
-		// -------------------------------------------------------------------------------------------------------------------------
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0, 0, 0));
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		tmp = model = glm::rotate(model, glm::radians(giroMonito), glm::vec3(0.0f, 1.0f, 0.0));
-		staticShader.setMat4("model", model);
-		torso.Draw(staticShader);
-
-		//Pierna Der
-		model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaDer.Draw(staticShader);
-
-		//Pie Der
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);
-
-		//Pierna Izq
-		model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		piernaIzq.Draw(staticShader);
-
-		//Pie Iz
-		model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		staticShader.setMat4("model", model);
-		botaDer.Draw(staticShader);	//Izq trase
-
-		//Brazo derecho
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoDer.Draw(staticShader);
-
-		//Brazo izquierdo
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-		staticShader.setMat4("model", model);
-		brazoIzq.Draw(staticShader);
-
-		//Cabeza
-		model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		staticShader.setMat4("model", model);
-		cabeza.Draw(staticShader);
+		
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Caja Transparente --- Siguiente Práctica
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -703,18 +626,22 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		posX--;
 	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
 		posX++;
-	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
-		rotRodIzq--;
-	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
-		rotRodIzq++;
-	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
-		giroMonito--;
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		posY++;
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		posY--;
 	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
-		giroMonito++;
-	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
-		lightPosition.x++;
+		giroTorso++;
+	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
+		giroTorso--;
 	if (glfwGetKey(window, GLFW_KEY_N) == GLFW_PRESS)
-		lightPosition.x--;
+		rotBrazoDer--;
+	if (glfwGetKey(window, GLFW_KEY_M) == GLFW_PRESS)
+		rotBrazoDer++;
+	if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS)
+		rotBrazoIzq--;
+	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+		rotBrazoIzq++;
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 		playMusic();
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
