@@ -1,0 +1,198 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.11.2021 12:53:32
+
+newmtl blue
+	Ns 16.6667
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.4872 0.4872 0.4872
+	Ks 0.4672 0.4672 0.4672
+	Ke 0.2807 0.2807 0.2807
+	map_Ka blue3.png
+	map_Kd blue3.png
+
+newmtl blue2
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.6004 0.6004 0.6004
+	Ks 0.5471 0.5471 0.5471
+	Ke 0.5738 0.5738 0.5738
+	map_Ka metal blue 3.png
+	map_Kd metal blue 3.png
+
+newmtl dark
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.4472 0.4472 0.4472
+	Ks 0.2141 0.2141 0.2141
+	Ke 0.3873 0.3873 0.3873
+	map_Ka metal dark 3.png
+	map_Kd metal dark 3.png
+
+newmtl dgrey
+	Ns 31.3333
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.4139 0.4139 0.4139
+	Kd 0.3074 0.3074 0.3074
+	Ks 0.2940 0.2940 0.2940
+	Ke 0.5738 0.5738 0.5738
+	map_Ka 044dgrey3.png
+	map_Kd 044dgrey3.png
+
+newmtl glass
+	Ns 86.6667
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.7403 0.7403 0.7403
+	Ks 0.3007 0.3007 0.3007
+	Ke 0.4206 0.4206 0.4206
+	map_Ka 089lblue3.png
+	map_Kd 089lblue3.png
+
+newmtl grating
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.7003 0.7003 0.7003
+	Ks 0.0809 0.0809 0.0809
+	Ke 0.5538 0.5538 0.5538
+	map_Ka grating 3.png
+	map_Kd grating 3.png
+
+newmtl grey
+	Ns 37.3333
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5671 0.5671 0.5671
+	Kd 0.3540 0.3540 0.3540
+	Ks 0.8268 0.8268 0.8268
+	Ke 0.6204 0.6204 0.6204
+	map_Ka 002grey3.png
+	map_Kd 002grey3.png
+
+newmtl grey2
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.4605 0.4605 0.4605
+	Ks 0.3939 0.3939 0.3939
+	Ke 0.3673 0.3673 0.3673
+	map_Ka metal grey 3.png
+	map_Kd metal grey 3.png
+
+newmtl light
+	Ns 9.3333
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.8268 0.8268 0.8268
+	Ke 0.6670 0.6670 0.6670
+	map_Ka metal very light 3.png
+	map_Kd metal very light 3.png
+
+newmtl metal
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.2807 0.2807 0.2807
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.2208 0.2208 0.2208
+	map_Ka metal 3.png
+	map_Kd metal 3.png
+
+newmtl metal2
+	Ns 18.6667
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.3007 0.3007 0.3007
+	Ke 0.7003 0.7003 0.7003
+	map_Ka 905metal3.png
+	map_Kd 905metal3.png
+
+newmtl orange
+	Ns 100.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 0.6803 0.6803 0.6803
+	Ks 0.5804 0.5804 0.5804
+	Ke 0.4872 0.4872 0.4872
+	map_Ka orange surface 3.png
+	map_Kd orange surface 3.png
+
+newmtl rlight
+	Ns 27.3333
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0010 0.0010 0.0010
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.1275 0.1275 0.1275
+	Ke 0.4739 0.4739 0.4739
+	map_Ka red light 3.png
+	map_Kd red light 3.png
+
+newmtl wlight
+	Ns 14.6667
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 1.0000 1.0000 1.0000
+	Ke 0.7602 0.7602 0.7602
+	map_Ka white light 3.png
+	map_Kd white light 3.png
