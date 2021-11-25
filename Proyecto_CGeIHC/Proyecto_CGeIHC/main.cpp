@@ -359,7 +359,6 @@ int main()
 	Model fogata("resources/objects/Fogata/camp_fire.obj");
 	Model espacio("resources/objects/Fogata/space.obj");
 	Model tunel("resources/objects/Tunel/Tunnel.obj");
-	Model tren("resources/objects/Tren/train.obj");
 	Model vias("resources/objects/Tren/rails.obj");
 	Model torsoHombre("resources/objects/Hombre/Torso.obj");
 	Model piernas("resources/objects/Hombre/Piernas.obj");
@@ -510,12 +509,6 @@ int main()
 		model = glm::scale(model, glm::vec3(0.5f));
 		staticShader.setMat4("model", model);
 		tunel.Draw(staticShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.5f));
-		staticShader.setMat4("model", model);
-		tren.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
