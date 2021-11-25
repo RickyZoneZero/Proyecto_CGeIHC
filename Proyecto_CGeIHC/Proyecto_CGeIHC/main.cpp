@@ -45,7 +45,7 @@ GLFWmonitor *monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 10.0f, 90.0f));
+Camera camera(glm::vec3(0.0f, 30.0f, 200.0f));
 float MovementSpeed = 0.1f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
@@ -64,8 +64,10 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // Posiciones segunda animación
 float movimientoPez = 0.0f,
 	  rotBrazoPescador = 0.0f,
-	  variable = 0.0f;
-bool animacion_2 = false;
+	  variable = 0.0f,
+	  movimientoTren = 0.0f;
+bool animacion_2 = false,
+	 animacion_3 = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -214,6 +216,16 @@ void animate(void)
 			variable += 0.5;
 		}
 	}
+
+	if (animacion_3) {
+		if (movimientoTren >= 450.0f) {
+			animacion_3 = false;
+			movimientoTren = 0.0f;
+		}
+		else {
+			movimientoTren += 5.0;
+		}
+	}
 }
 
 void playMusic() {
@@ -354,11 +366,14 @@ int main()
 	// load models
 	// -----------
 	Model piso("resources/objects/piso/piso.obj");
+	Model cabana("resources/objects/CASA_FINAL/cabin.obj");
+	Model carro("resources/objects/Carro/car.obj");
 	Model pino("resources/objects/Pino/Spruce.obj");
 	Model pinos("resources/objects/Pino/Pinos.obj");
 	Model fogata("resources/objects/Fogata/camp_fire.obj");
 	Model espacio("resources/objects/Fogata/space.obj");
 	Model tunel("resources/objects/Tunel/Tunnel.obj");
+	Model tren("resources/objects/Tren/train.obj");
 	Model vias("resources/objects/Tren/rails.obj");
 	Model torsoHombre("resources/objects/Hombre/Torso.obj");
 	Model piernas("resources/objects/Hombre/Piernas.obj");
@@ -468,13 +483,13 @@ int main()
 		// Personajes de animación
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-425.0f, -1.75f, -20.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-210.0f, -1.75f, -200.0f));
 		model = glm::rotate(model, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
 		personaje_1.Draw(animShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-385.0f, -1.75f, -20.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-250.0f, -1.75f, -200.0f));
 		model = glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
@@ -490,12 +505,22 @@ int main()
 
 
 		model = glm::mat4(1.0f);
+		//Cabaña
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, 0.0f));
+		staticShader.setMat4("model", model);
+		cabana.Draw(staticShader);
+
+		//Elementos exteriores
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-450.0f, -1.75f, -250.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-100.0f, -1.75f, 0.0f));
+		staticShader.setMat4("model", model);
+		carro.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, -250.0f));
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);
 
@@ -503,6 +528,12 @@ int main()
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		pinos.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(200.0f - movimientoTren, -1.75f, -450.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f));
+		staticShader.setMat4("model", model);
+		tren.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-340.0f, -1.75f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -517,21 +548,21 @@ int main()
 		vias.Draw(staticShader);
 
 		//Fogata
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, -1.75f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-230.0f, -1.75f, -200.0f));
 		staticShader.setMat4("model", model);
 		fogata.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, -2.0f, 0.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-230.0f, -2.0f, -200.0f));
 		staticShader.setMat4("model", model);
 		espacio.Draw(staticShader);
 
 		//Hombre jugando baloncesto
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 5.25f + posY, 380.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f, 5.25f + posY, 350.0f));
 		temporal = model = glm::rotate(model, glm::radians(giroTorso), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		torsoHombre.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f + posY, 380.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f, -1.75f + posY, 350.0f));
 		staticShader.setMat4("model", model);
 		piernas.Draw(staticShader);
 
@@ -545,19 +576,19 @@ int main()
 		staticShader.setMat4("model", model);
 		brazoIzquierdo.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f + posX_2 , -1.75f + posY_2 , 380.0f + posZ_2));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f + posX_2 , -1.75f + posY_2 , 350.0f + posZ_2));
 		model = glm::scale(model, glm::vec3(0.8f));
 		staticShader.setMat4("model", model);
 		balon.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 450.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f, -1.75f, 420.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		canasta_baloncesto.Draw(staticShader);
 
 
 		//Pescador en lago congelado
-		temporal = model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+		temporal = model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
 		pescador.Draw(staticShader);
 
@@ -566,33 +597,22 @@ int main()
 		staticShader.setMat4("model", model);
 		brazoDerPescador.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
 		canoa.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f + movimientoPez, 350.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f + movimientoPez, 350.0f));
 		staticShader.setMat4("model", model);
 		pez.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
 		cania.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -2.0f, 350.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -2.0f, 350.0f));
 		staticShader.setMat4("model", model);
 		rioCongelado.Draw(staticShader);
 
-		
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Caja Transparente --- Siguiente Práctica
-		// -------------------------------------------------------------------------------------------------------------------------
-		/*glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
-		staticShader.setMat4("model", model);
-		cubo.Draw(staticShader);
-		glEnable(GL_BLEND);*/
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
 		// -------------------------------------------------------------------------------------------------------------------------
@@ -680,6 +700,9 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	//Animación de hombre pescando
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
 		animacion_2 ^= true;
+	//Animación movimiento tren
+	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+		animacion_3 ^= true;
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 		playMusic();
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
