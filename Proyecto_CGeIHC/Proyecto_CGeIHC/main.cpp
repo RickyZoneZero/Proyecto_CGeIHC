@@ -61,12 +61,11 @@ double	deltaTime = 0.0f,
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
 glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 
-// posiciones
-//float x = 0.0f;
-//float y = 0.0f;
-float	movTren = 0.0f;
-
-bool	animacion = false;
+// Posiciones segunda animación
+float movimientoPez = 0.0f,
+	  rotBrazoPescador = 0.0f,
+	  variable = 0.0f;
+bool animacion_2 = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -201,10 +200,19 @@ void animate(void)
 		}
 	}
 
-	//Vehículo
-	if (animacion)
+	//Pescador
+	if (animacion_2)
 	{
-		movTren += 3.0f;
+		if (movimientoPez >= 18.0f) {
+			animacion_2 = false;
+			movimientoPez = -10.0f;
+			rotBrazoPescador = 0.0f;
+		}
+		else {
+			movimientoPez += 0.2f;
+			rotBrazoPescador = 5.0*cos(variable);
+			variable += 0.5;
+		}
 	}
 }
 
@@ -348,6 +356,8 @@ int main()
 	Model piso("resources/objects/piso/piso.obj");
 	Model pino("resources/objects/Pino/Spruce.obj");
 	Model pinos("resources/objects/Pino/Pinos.obj");
+	Model fogata("resources/objects/Fogata/camp_fire.obj");
+	Model espacio("resources/objects/Fogata/space.obj");
 	Model tunel("resources/objects/Tunel/Tunnel.obj");
 	Model tren("resources/objects/Tren/train.obj");
 	Model vias("resources/objects/Tren/rails.obj");
@@ -363,8 +373,7 @@ int main()
 	Model rioCongelado("resources/objects/Rio/rio_congelado.obj");
 	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
-	Model carro("resources/objects/lambo/carroceria.obj");
-	Model llanta("resources/objects/lambo/Wheel.obj");
+
 
 	ModelAnim personaje_1("resources/objects/Personajes_Bailando/Personaje_1.dae");
 	personaje_1.initShaders(animShader.ID);
@@ -372,14 +381,7 @@ int main()
 	ModelAnim personaje_2("resources/objects/Personajes_Bailando/Personaje_2.dae");
 	personaje_2.initShaders(animShader.ID);
 
-	ModelAnim personaje_3("resources/objects/Personajes_Bailando/Personaje_3.dae");
-	personaje_3.initShaders(animShader.ID);
 
-	ModelAnim personaje_4("resources/objects/Personajes_Bailando/Personaje_4.dae");
-	personaje_4.initShaders(animShader.ID);
-
-	ModelAnim personaje_5("resources/objects/Personajes_Bailando/Personaje_5.dae");
-	personaje_5.initShaders(animShader.ID);
 
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
@@ -467,30 +469,18 @@ int main()
 		// Personajes de animación
 		// -------------------------------------------------------------------------------------------------------------------------
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-335.0f, -1.75f, 100.0f)); 
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-425.0f, -1.75f, -20.0f));
+		model = glm::rotate(model, glm::radians(-20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		//personaje_1.Draw(animShader);
+		personaje_1.Draw(animShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-355.0f, -1.75f, 100.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-385.0f, -1.75f, -20.0f));
+		model = glm::rotate(model, glm::radians(20.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.15f));
 		animShader.setMat4("model", model);
-		//personaje_2.Draw(animShader);
+		personaje_2.Draw(animShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-375.0f, -1.75f, 100.0f));
-		model = glm::scale(model, glm::vec3(0.15f));
-		animShader.setMat4("model", model);
-		//personaje_3.Draw(animShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-315.0f, -1.75f, 100.0f));
-		model = glm::scale(model, glm::vec3(0.15f));
-		animShader.setMat4("model", model);
-		//personaje_4.Draw(animShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-295.0f, -1.75f, 100.0f));
-		model = glm::scale(model, glm::vec3(0.15f));
-		animShader.setMat4("model", model);
-		//personaje_5.Draw(animShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Escenario
@@ -521,7 +511,7 @@ int main()
 		staticShader.setMat4("model", model);
 		tunel.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f - movTren, -1.75f, -450.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, -450.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f));
 		staticShader.setMat4("model", model);
@@ -532,6 +522,15 @@ int main()
 		model = glm::scale(model, glm::vec3(0.5f));
 		staticShader.setMat4("model", model);
 		vias.Draw(staticShader);
+
+		//Fogata
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, -1.75f, 0.0f));
+		staticShader.setMat4("model", model);
+		fogata.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-400.0f, -2.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		espacio.Draw(staticShader);
 
 		//Hombre jugando baloncesto
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, 5.25f + posY, 380.0f));
@@ -570,6 +569,7 @@ int main()
 		pescador.Draw(staticShader);
 
 		model = glm::translate(temporal, glm::vec3(11.3f, 16.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(rotBrazoPescador), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		brazoDerPescador.Draw(staticShader);
 
@@ -577,7 +577,7 @@ int main()
 		staticShader.setMat4("model", model);
 		canoa.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f + movimientoPez, 350.0f));
 		staticShader.setMat4("model", model);
 		pez.Draw(staticShader);
 
@@ -585,7 +585,7 @@ int main()
 		staticShader.setMat4("model", model);
 		cania.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -2.0f, 350.0f));
 		staticShader.setMat4("model", model);
 		rioCongelado.Draw(staticShader);
 
@@ -644,7 +644,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
-	//To Configure Model
+	//Para configurar modelos
 	if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
 		posZ++;
 	if (glfwGetKey(window, GLFW_KEY_H) == GLFW_PRESS)
@@ -681,16 +681,16 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		rotBrazoIzq--;
 	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
 		rotBrazoIzq++;
+	//Animación de hombre jugando baloncesto
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
 		readFile("animation_one");
+	//Animación de hombre pescando
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-		writeFile();
-	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+		animacion_2 ^= true;
+	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 		playMusic();
-
-	//Car animation
-	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
-		animacion ^= true;
+	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
+		writeFile();
 
 	//To play KeyFrame animation 
 	if (key == GLFW_KEY_P && action == GLFW_PRESS)
