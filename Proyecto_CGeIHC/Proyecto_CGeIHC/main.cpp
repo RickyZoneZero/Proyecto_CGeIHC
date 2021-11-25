@@ -292,6 +292,7 @@ int main()
 	Model cabeza("resources/objects/Personaje/cabeza.obj");
 	Model carro("resources/objects/lambo/carroceria.obj");
 	Model llanta("resources/objects/lambo/Wheel.obj");
+	Model cabana("resources/objects/CASA_FINAL/cabin.obj");
 
 	ModelAnim mujerPescando("resources/objects/Pescador/Pescadora.dae");
 	mujerPescando.initShaders(animShader.ID);
@@ -404,6 +405,11 @@ int main()
 		staticShader.setMat4("projection", projection);
 		staticShader.setMat4("view", view);
 
+		//Cabañana principal
+		model = glm::mat4(1.0f);
+		//model = glm::translate(tmp, glm::vec3(0.0f, -1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cabana.Draw(staticShader);
 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
@@ -565,6 +571,7 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
 		staticShader.setMat4("model", model);
 		cabeza.Draw(staticShader);
+
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Caja Transparente --- Siguiente Práctica
 		// -------------------------------------------------------------------------------------------------------------------------

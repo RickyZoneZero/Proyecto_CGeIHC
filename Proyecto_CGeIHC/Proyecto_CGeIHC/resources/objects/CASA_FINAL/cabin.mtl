@@ -1,0 +1,1119 @@
+newmtl Christmas_Tree
+illum 4
+Kd 0.02 0.12 0.00
+Ka 0.02 0.12 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.22 0.22 0.22
+Ns 10.00
+newmtl Estufa_y_cajones_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd defuse.jpg
+Ni 1.00
+newmtl Gabinete_viejo_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Diffuse.tga
+Ni 1.00
+newmtl Lampara_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cafe.jpg
+Ni 1.00
+newmtl Lampara_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cafe.jpg
+Ni 1.00
+newmtl Lampara_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blanco.jpg
+Ni 1.00
+newmtl Lampara_lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl Mesa_practica_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl Mesa_practica_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl Sillon_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cuero_sintetico.jpg
+Ni 1.00
+newmtl _10225_Dinner_Table_v1_amtl_10225_Dinner_Table_v1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10225_Dinner_Table_v1_Diffuse.jpg
+map_Ka 10225_Dinner_Table_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.58 0.58 0.58
+Ns 15.00
+newmtl _Armless_Dinner_Chair_v2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+map_Ka 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl alacena_flotante_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd KUW_Tex.tga
+Ni 1.00
+newmtl ball_metall
+illum 4
+Kd 0.88 0.82 0.64
+Ka 1.00 1.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.60 0.58 0.50
+Ns 60.00
+newmtl blue
+illum 4
+Kd 0.07 0.00 1.00
+Ka 0.07 0.00 1.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.48 0.24 0.70
+Ns 20.00
+newmtl cabin2_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd brown_cabin.jpg
+Ni 1.00
+newmtl cabin2_lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl cabin3_cabin1_initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl cabin3_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd brown_cabin.jpg
+Ni 1.00
+newmtl cabin3_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl cabin3_lambert6SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl cama_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_old_pillow_BaseColor.jpg
+Ni 1.00
+newmtl cama_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_oldblanket_BaseColor.jpg
+Ni 1.00
+newmtl cama_lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_WoodBed_BaseColor.jpg
+Ni 1.00
+newmtl closet_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl closet_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl closet_lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd negro.jpg
+Ni 1.00
+newmtl closet_lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl closet_lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl decoratijn_blue
+illum 4
+Kd 0.58 0.80 1.00
+Ka 0.58 0.80 1.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.52 0.70 0.68
+Ns 12.00
+newmtl decoration_green
+illum 4
+Kd 0.58 1.00 0.78
+Ka 0.58 1.00 0.78
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.56 0.68 0.51
+Ns 12.00
+newmtl decoration_pink
+illum 4
+Kd 1.00 0.58 0.65
+Ka 1.00 0.58 0.65
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.70 0.60 0.69
+Ns 12.00
+newmtl excusado_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blanco.jpg
+Ni 1.00
+newmtl initialShadingGroup
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood-panel-texture-9.jpg
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert8SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd chimenea.jpg
+Ni 1.00
+newmtl lambert9SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd chimenea.jpg
+Ni 1.00
+newmtl lambert11SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert12SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert13SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert14SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Texture_Boards_Wooden_478676.jpg
+Ni 1.00
+newmtl lambert37SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl lambert38SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl lambert40SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl lambert41SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd top_botton.jpg
+Ni 1.00
+newmtl lambert42SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl loop
+illum 4
+Kd 0.34 0.30 0.22
+Ka 0.34 0.30 0.22
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.63 0.63 0.63
+Ns 20.00
+newmtl pasted__Gabinete_viejo_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Diffuse.tga
+Ni 1.00
+newmtl pasted__Gabinete_viejo_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Diffuse.tga
+Ni 1.00
+newmtl pasted__Gabinete_viejo_lambert2SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Diffuse.tga
+Ni 1.00
+newmtl pasted__Gabinete_viejo_lambert2SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Diffuse.tga
+Ni 1.00
+newmtl pasted__Gabinete_viejo_lambert2SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Diffuse.tga
+Ni 1.00
+newmtl pasted__Lampara_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cafe.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cafe.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cafe.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert3SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cafe.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blanco.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert4SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blanco.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl pasted__Lampara_lambert5SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl pasted__Mesa_practica_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__alacena_flotante_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd KUW_Tex.tga
+Ni 1.00
+newmtl pasted__alacena_flotante_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd KUW_Tex.tga
+Ni 1.00
+newmtl pasted__cama_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_old_pillow_BaseColor.jpg
+Ni 1.00
+newmtl pasted__cama_lambert3SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_old_pillow_BaseColor.jpg
+Ni 1.00
+newmtl pasted__cama_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_oldblanket_BaseColor.jpg
+Ni 1.00
+newmtl pasted__cama_lambert4SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_oldblanket_BaseColor.jpg
+Ni 1.00
+newmtl pasted__cama_lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_WoodBed_BaseColor.jpg
+Ni 1.00
+newmtl pasted__cama_lambert6SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd T_WoodBed_BaseColor.jpg
+Ni 1.00
+newmtl pasted__closet_lambert2SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl pasted__closet_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl pasted__closet_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl pasted__closet_lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd negro.jpg
+Ni 1.00
+newmtl pasted__closet_lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl pasted__closet_lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl pasted__excusado_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd blanco.jpg
+Ni 1.00
+newmtl pasted__lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG7
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG9
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert2SG10
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__lambert3SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__closet_lambert2SG
+illum 4
+Kd 0.50 0.50 0.50
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+newmtl pasted__pasted__closet_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl pasted__pasted__closet_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd silver.jpg
+Ni 1.00
+newmtl pasted__pasted__closet_lambert5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd negro.jpg
+Ni 1.00
+newmtl pasted__pasted__closet_lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl pasted__pasted__closet_lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd schumacherwoodgrainbrazcherry.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG7
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG9
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG10
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG11
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG12
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG13
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG14
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG15
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG16
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG17
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG18
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG19
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG20
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG21
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG22
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG23
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert2SG24
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mamposteria.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert3SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__lambert3SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert3SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__lambert3SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert3SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__lambert3SG8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__pasted__pasted__pasted__pasted__lambert3SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__puerta_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd InteriorDoor_Diffuce.jpg
+Ni 1.00
+newmtl pasted__puerta_lambert2SG2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd InteriorDoor_Diffuce.jpg
+Ni 1.00
+newmtl pasted__puerta_lambert2SG4
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd InteriorDoor_Diffuce.jpg
+Ni 1.00
+newmtl pasted__puerta_lambert2SG6
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd InteriorDoor_Diffuce.jpg
+Ni 1.00
+newmtl pasted__silla_sofa_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl pasted__silla_sofa_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd sofa_text.jpg
+Ni 1.00
+newmtl pasted__teja_lambert2SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd roof_shingles2.png
+Ni 1.00
+newmtl pink
+illum 4
+Kd 1.00 0.50 0.80
+Ka 1.00 0.50 0.80
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.05 0.60 0.66
+Ns 20.00
+newmtl puerta_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd InteriorDoor_Diffuce.jpg
+Ni 1.00
+newmtl puerta_principal_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd DRS00101.jpg
+Ni 1.00
+newmtl puerta_principal_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd mate_gray.jpg
+Ni 1.00
+newmtl red
+illum 4
+Kd 0.75 0.00 0.00
+Ka 0.75 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.70 0.70 0.24
+Ns 20.00
+newmtl refD_lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd B_Electric_Co_007_1.png
+Ni 1.00
+newmtl silla_comedor__Armless_Dinner_Chair_v2
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+map_Ka 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl silla_comedor__Armless_Dinner_Chair_v5
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+map_Ka 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl silla_comedor__Armless_Dinner_Chair_v8
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+map_Ka 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl silla_comedor__Armless_Dinner_Chair_v11
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+map_Ka 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl silla_comedor__Armless_Dinner_Chair_v14
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+map_Ka 10214_Armless_Dinner_Chair_v1_Diffuse.jpg
+Ni 1.50
+Ks 0.00 0.00 0.00
+Ns 10.00
+newmtl silla_sofa_lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd wood_table.jpg
+Ni 1.00
+newmtl silla_sofa_lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd sofa_text.jpg
+Ni 1.00
+newmtl teja_lambert2SG3
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd roof_shingles2.png
+Ni 1.00
+newmtl white
+illum 4
+Kd 0.55 0.55 0.55
+Ka 0.55 0.55 0.55
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.68 0.69 0.55
+Ns 12.00
+newmtl yellow
+illum 4
+Kd 1.00 0.72 0.00
+Ka 1.00 0.72 0.00
+Tf 1.00 1.00 1.00
+Ni 1.50
+Ks 0.70 0.35 0.40
+Ns 20.00
