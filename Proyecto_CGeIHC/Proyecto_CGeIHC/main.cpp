@@ -64,16 +64,9 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // posiciones
 //float x = 0.0f;
 //float y = 0.0f;
-float	movAuto_x = 0.0f,
-movAuto_z = 0.0f,
-orienta = 0.0f,
-movTren = 0.0f;
-bool	animacion = false,
-		recorrido1 = true,
-		recorrido2 = false,
-		recorrido3 = false,
-		recorrido4 = false;
+float	movTren = 0.0f;
 
+bool	animacion = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -81,15 +74,21 @@ float	posX = 0.0f,
 		posZ = 0.0f,
 		rotBrazoDer = 0.0f,
 		rotBrazoIzq = 0.0f,
-		giroTorso = 0.0f;
+		giroTorso = 0.0f,
+		posX_2 = 0.0f,
+		posY_2 = 0.0f,
+		posZ_2 = 0.0f;
 float	incX = 0.0f,
 		incY = 0.0f,
 		incZ = 0.0f,
 		rotBrazoDerInc = 0.0f,
 		rotBrazoIzqInc = 0.0f,
-		giroTorsoInc = 0.0f;
+		giroTorsoInc = 0.0f,
+		incX_2 = 0.0f,
+		incY_2 = 0.0f,
+		incZ_2 = 0.0f;
 
-#define MAX_FRAMES 7
+#define MAX_FRAMES 8
 int i_max_steps = 60;
 int i_curr_steps = 0;
 typedef struct _frame
@@ -101,11 +100,14 @@ typedef struct _frame
 	float rotBrazoDer;
 	float rotBrazoIzq;
 	float giroTorso;
+	float posX_2;
+	float posY_2;
+	float posZ_2;
 
 }FRAME;
 
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 0;			//introducir datos
+int FrameIndex = 7;			//introducir datos
 bool play = false;
 int playIndex = 0;
 
@@ -121,6 +123,10 @@ void saveFrame(void)
 	KeyFrame[FrameIndex].rotBrazoIzq = rotBrazoIzq;
 	KeyFrame[FrameIndex].giroTorso = giroTorso;
 
+	KeyFrame[FrameIndex].posX_2 = posX_2;
+	KeyFrame[FrameIndex].posY_2 = posY_2;
+	KeyFrame[FrameIndex].posZ_2 = posZ_2;
+
 	FrameIndex++;
 }
 
@@ -133,6 +139,10 @@ void resetElements(void)
 	rotBrazoDer = KeyFrame[0].rotBrazoDer;
 	rotBrazoIzq = KeyFrame[0].rotBrazoIzq;
 	giroTorso = KeyFrame[0].giroTorso;
+	
+	posX_2 = KeyFrame[0].posX_2;
+	posY_2 = KeyFrame[0].posY_2;
+	posZ_2 = KeyFrame[0].posZ_2;
 }
 
 void interpolation(void)
@@ -144,6 +154,10 @@ void interpolation(void)
 	rotBrazoDerInc = (KeyFrame[playIndex + 1].rotBrazoDer - KeyFrame[playIndex].rotBrazoDer) / i_max_steps;
 	rotBrazoIzqInc = (KeyFrame[playIndex + 1].rotBrazoIzq - KeyFrame[playIndex].rotBrazoIzq) / i_max_steps;
 	giroTorsoInc = (KeyFrame[playIndex + 1].giroTorso - KeyFrame[playIndex].giroTorso) / i_max_steps;
+
+	incX_2 = (KeyFrame[playIndex + 1].posX_2 - KeyFrame[playIndex].posX_2) / i_max_steps;
+	incY_2 = (KeyFrame[playIndex + 1].posY_2 - KeyFrame[playIndex].posY_2) / i_max_steps;
+	incZ_2 = (KeyFrame[playIndex + 1].posZ_2 - KeyFrame[playIndex].posZ_2) / i_max_steps;
 
 }
 
@@ -179,6 +193,10 @@ void animate(void)
 			rotBrazoIzq += rotBrazoIzqInc;
 			giroTorso += giroTorsoInc;
 
+			posX_2 += incX_2;
+			posY_2 += incY_2;
+			posZ_2 += incZ_2;
+
 			i_curr_steps++;
 		}
 	}
@@ -198,20 +216,21 @@ void playMusic() {
 void writeFile() {
 
 	// Create and open a text file
-	ofstream MyFile("resources/animation_files/animation_one.txt");
+	ofstream MyFile("resources/animation_files/animation_two.txt");
 
 	// Write to the file
 	MyFile.write((char*)&KeyFrame, sizeof(KeyFrame));
 	cout << "Archivo escrito";
+
 	// Close the file
 	MyFile.close();
 }
 
-void readFile() {
+void readFile(string fileName) {
 	int arraySize = sizeof(KeyFrame) / sizeof(KeyFrame[0]);
 
 	// Read from the text file
-	ifstream MyReadFile("resources/animation_files/animation_one.txt");
+	ifstream MyReadFile("resources/animation_files/"+ fileName +".txt");
 	FRAME temp[MAX_FRAMES];
 
 	MyReadFile.read((char*)&temp, sizeof(temp));
@@ -224,6 +243,9 @@ void readFile() {
 		KeyFrame[idx].rotBrazoDer = temp[idx].rotBrazoDer;
 		KeyFrame[idx].rotBrazoIzq = temp[idx].rotBrazoIzq;
 		KeyFrame[idx].giroTorso = temp[idx].giroTorso;
+		KeyFrame[idx].posX_2 = temp[idx].posX_2;
+		KeyFrame[idx].posY_2 = temp[idx].posY_2;
+		KeyFrame[idx].posZ_2 = temp[idx].posZ_2;
 
 		cout << "KeyFrame [" << idx << "].posX = " << temp[idx].posX << ";" << endl;
 		cout << "KeyFrame [" << idx << "].posY = " << temp[idx].posY << ";" << endl;
@@ -231,6 +253,9 @@ void readFile() {
 		cout << "KeyFrame [" << idx << "].rotBrazoDer = " << temp[idx].rotBrazoDer << ";" << endl;
 		cout << "KeyFrame [" << idx << "].rotBrazoIzq = " << temp[idx].rotBrazoIzq << ";" << endl;
 		cout << "KeyFrame [" << idx << "].giroTorso = " << temp[idx].giroTorso << ";" << endl;
+		cout << "KeyFrame [" << idx << "].posX_2 = " << temp[idx].posX_2 << ";" << endl;
+		cout << "KeyFrame [" << idx << "].posY_2 = " << temp[idx].posY_2 << ";" << endl;
+		cout << "KeyFrame [" << idx << "].posZ_2 = " << temp[idx].posZ_2 << ";" << endl;
 	}
 
 	// Close the file
@@ -331,10 +356,10 @@ int main()
 	Model brazoDerecho("resources/objects/Hombre/BrazoDerechoLego.obj");
 	Model brazoIzquierdo("resources/objects/Hombre/BrazoIzquierdoLego.obj");
 	Model pescador("resources/objects/Pescador/Lego.obj");
+	Model brazoDerPescador("resources/objects/Pescador/brazoPescador.obj");
 	Model pez("resources/objects/Pez/fish.obj");
 	Model canoa("resources/objects/Canoa/boat.obj");
 	Model cania("resources/objects/Pescador/fishingRod.obj");
-	Model manivela("resources/objects/Pescador/manivela.obj");
 	Model rioCongelado("resources/objects/Rio/rio_congelado.obj");
 	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
@@ -528,7 +553,7 @@ int main()
 		staticShader.setMat4("model", model);
 		brazoIzquierdo.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f, -1.75f, 380.0f));
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(450.0f + posX_2 , -1.75f + posY_2 , 380.0f + posZ_2));
 		model = glm::scale(model, glm::vec3(0.8f));
 		staticShader.setMat4("model", model);
 		balon.Draw(staticShader);
@@ -538,9 +563,15 @@ int main()
 		staticShader.setMat4("model", model);
 		canasta_baloncesto.Draw(staticShader);
 
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
+
+		//Pescador en lago congelado
+		temporal = model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
 		pescador.Draw(staticShader);
+
+		model = glm::translate(temporal, glm::vec3(11.3f, 16.0f, 5.0f));
+		staticShader.setMat4("model", model);
+		brazoDerPescador.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
@@ -553,10 +584,6 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
 		cania.Draw(staticShader);
-
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
-		staticShader.setMat4("model", model);
-		manivela.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-350.0f, -1.75f, 350.0f));
 		staticShader.setMat4("model", model);
@@ -626,10 +653,22 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		posX--;
 	if (glfwGetKey(window, GLFW_KEY_J) == GLFW_PRESS)
 		posX++;
-	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
 		posY++;
-	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS)
 		posY--;
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		posZ_2++;
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		posZ_2--;
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		posX_2++;
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		posX_2--;
+	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		posY_2++;
+	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		posY_2--;
 	if (glfwGetKey(window, GLFW_KEY_B) == GLFW_PRESS)
 		giroTorso++;
 	if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS)
@@ -643,11 +682,11 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
 		rotBrazoIzq++;
 	if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
-		playMusic();
+		readFile("animation_one");
 	if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
 		writeFile();
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
-		readFile();
+		playMusic();
 
 	//Car animation
 	if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)

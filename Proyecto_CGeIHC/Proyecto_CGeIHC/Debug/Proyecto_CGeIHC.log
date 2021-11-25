@@ -2,11 +2,14 @@
 C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\include\shader_m.h(44,40): warning C4101: 'e': variable local sin referencia
 C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\include\modelAnim.h(104,44): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
 C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\include\modelAnim.h(520,24): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(702,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(703,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(707,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(708,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(710,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(711,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
-C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(719,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(741,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(742,11): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(746,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(747,16): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(749,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(750,10): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Proyecto_CGeIHC\main.cpp(758,28): warning C4244: 'argumento': conversión de 'double' a 'float'; posible pérdida de datos
+glfw3.lib(input.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(input.obj)' o en 'C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(monitor.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(monitor.obj)' o en 'C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+glfw3.lib(win32_window.obj) : warning LNK4099: no se encontró PDB 'glfw.pdb' con 'glfw3.lib(win32_window.obj)' o en 'C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Debug\glfw.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   Proyecto_CGeIHC.vcxproj -> C:\Users\enriq\Desktop\Proyecto_CGeIHC\Proyecto_CGeIHC\Debug\Proyecto_CGeIHC.exe
