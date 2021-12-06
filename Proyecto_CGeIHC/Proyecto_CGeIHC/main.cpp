@@ -64,14 +64,11 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 // Posiciones segunda animación
 float movimientoPez = 0.0f,
 	  movimientoTorso = 0.0f,
-	  movimientoColumpio = 0.0f,
 	  rotBrazoPescador = 0.0f,
 	  variable = 0.0f,
-	  variable_2 = 0.0f,
 	  movimientoTren = 0.0f;
 bool animacion_2 = false,
-	 animacion_3 = false,
-	 animacion_4 = false;
+	 animacion_3 = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -233,18 +230,6 @@ void animate(void)
 		}
 	}
 
-	//Columpio
-	if (animacion_4) {
-		if (variable_2 >= 30.0f) {
-			animacion_4 = false;
-			variable_2 = 0.0f;
-			movimientoColumpio = 0.0f;
-		}
-		else {
-			movimientoColumpio = 30.0 * cos(variable_2/2);
-			variable_2 += 0.5;
-		}
-	}
 }
 
 void playMusic() {
@@ -409,6 +394,8 @@ int main()
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
 	Model baseColumpio("resources/objects/Columpio/base.obj");
 	Model asientoColumpio("resources/objects/Columpio/asiento.obj");
+	Model torsoLegoColumpio("resources/objects/Columpio/torsoLego.obj");
+	Model piernasLegoColumpio("resources/objects/Columpio/piernasLego.obj");
 
 	ModelAnim personaje_1("resources/objects/Personajes_Bailando/Personaje_1.dae");
 	personaje_1.initShaders(animShader.ID);
@@ -578,6 +565,7 @@ int main()
 		espacio.Draw(staticShader);
 
 		//Hombre jugando baloncesto
+		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f, 5.25f + posY, 350.0f));
 		temporal = model = glm::rotate(model, glm::radians(giroTorso), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -606,7 +594,7 @@ int main()
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		canasta_baloncesto.Draw(staticShader);
-
+		
 
 		//Pescador en lago congelado
 		temporal = model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
@@ -645,9 +633,21 @@ int main()
 		baseColumpio.Draw(staticShader);
 
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(150.0f, 45.0f, 350.0f));
-		model = glm::rotate(model, glm::radians(movimientoColumpio), glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(posZ_2), glm::vec3(0.0f, 0.0f, 1.0f));
 		staticShader.setMat4("model", model);
 		asientoColumpio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(155.0f + posX, -0.75f + posY, 350.0f + posZ));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		torsoLegoColumpio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(155.0f + posX, 5.25f + posY, 350.0f + posZ));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(giroTorso), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		piernasLegoColumpio.Draw(staticShader);
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
@@ -741,7 +741,7 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		animacion_3 ^= true;
 	//Animación columpio
 	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
-		animacion_4 ^= true;
+		readFile("animation_two");
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 		playMusic();
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
