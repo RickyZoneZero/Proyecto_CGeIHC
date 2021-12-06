@@ -63,11 +63,15 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 
 // Posiciones segunda animación
 float movimientoPez = 0.0f,
+	  movimientoTorso = 0.0f,
+	  movimientoColumpio = 0.0f,
 	  rotBrazoPescador = 0.0f,
 	  variable = 0.0f,
+	  variable_2 = 0.0f,
 	  movimientoTren = 0.0f;
 bool animacion_2 = false,
-	 animacion_3 = false;
+	 animacion_3 = false,
+	 animacion_4 = false;
 
 //Keyframes (Manipulación y dibujo)
 float	posX = 0.0f,
@@ -205,25 +209,40 @@ void animate(void)
 	//Pescador
 	if (animacion_2)
 	{
-		if (movimientoPez >= 18.0f) {
+		if (movimientoPez >= 22.0f) {
 			animacion_2 = false;
 			movimientoPez = -10.0f;
+			movimientoTorso = 0.0f;
 			rotBrazoPescador = 0.0f;
 		}
 		else {
 			movimientoPez += 0.2f;
+			movimientoTorso = 1.0 * cos(variable);
 			rotBrazoPescador = 5.0*cos(variable);
 			variable += 0.5;
 		}
 	}
-
+	//Tren
 	if (animacion_3) {
-		if (movimientoTren >= 450.0f) {
+		if (movimientoTren >= 500.0f) {
 			animacion_3 = false;
 			movimientoTren = 0.0f;
 		}
 		else {
 			movimientoTren += 5.0;
+		}
+	}
+
+	//Columpio
+	if (animacion_4) {
+		if (variable_2 >= 30.0f) {
+			animacion_4 = false;
+			variable_2 = 0.0f;
+			movimientoColumpio = 0.0f;
+		}
+		else {
+			movimientoColumpio = 30.0 * cos(variable_2/2);
+			variable_2 += 0.5;
 		}
 	}
 }
@@ -379,7 +398,8 @@ int main()
 	Model piernas("resources/objects/Hombre/Piernas.obj");
 	Model brazoDerecho("resources/objects/Hombre/BrazoDerechoLego.obj");
 	Model brazoIzquierdo("resources/objects/Hombre/BrazoIzquierdoLego.obj");
-	Model pescador("resources/objects/Pescador/Lego.obj");
+	Model piernasPescador("resources/objects/Pescador/piernas.obj");
+	Model cuerpoPescador("resources/objects/Pescador/Lego.obj");
 	Model brazoDerPescador("resources/objects/Pescador/brazoPescador.obj");
 	Model pez("resources/objects/Pez/fish.obj");
 	Model canoa("resources/objects/Canoa/boat.obj");
@@ -387,7 +407,8 @@ int main()
 	Model rioCongelado("resources/objects/Rio/rio_congelado.obj");
 	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
-
+	Model baseColumpio("resources/objects/Columpio/base.obj");
+	Model asientoColumpio("resources/objects/Columpio/asiento.obj");
 
 	ModelAnim personaje_1("resources/objects/Personajes_Bailando/Personaje_1.dae");
 	personaje_1.initShaders(animShader.ID);
@@ -589,8 +610,13 @@ int main()
 
 		//Pescador en lago congelado
 		temporal = model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
+		model = glm::rotate(model, glm::radians(movimientoTorso), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pescador.Draw(staticShader);
+		cuerpoPescador.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
+		staticShader.setMat4("model", model);
+		piernasPescador.Draw(staticShader);
 
 		model = glm::translate(temporal, glm::vec3(11.3f, 16.0f, 5.0f));
 		model = glm::rotate(model, glm::radians(rotBrazoPescador), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -612,6 +638,16 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -2.0f, 350.0f));
 		staticShader.setMat4("model", model);
 		rioCongelado.Draw(staticShader);
+
+		//Columpio
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(150.0f, -1.75f, 350.0f));
+		staticShader.setMat4("model", model);
+		baseColumpio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(150.0f, 45.0f, 350.0f));
+		model = glm::rotate(model, glm::radians(movimientoColumpio), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		asientoColumpio.Draw(staticShader);
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
@@ -703,6 +739,9 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	//Animación movimiento tren
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 		animacion_3 ^= true;
+	//Animación columpio
+	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+		animacion_4 ^= true;
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 		playMusic();
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
