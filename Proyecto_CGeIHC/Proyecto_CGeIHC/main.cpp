@@ -1,7 +1,6 @@
 ﻿/*Archivo de código correspondiente al proyecto de la asignatura de CGeIHC del semestre 2022-1
 * Hernández Zamora José Enrique
 * Jiménez Gutiérrez Miguel
-* Martínez Ortíz Carlos Daniel
 */
 #include <Windows.h>
 
@@ -63,6 +62,7 @@ glm::vec3 lightDirection(0.0f, -1.0f, -1.0f);
 
 // Posiciones segunda animación
 float movimientoPez = 0.0f,
+	  movimientoTorso = 0.0f,
 	  rotBrazoPescador = 0.0f,
 	  variable = 0.0f,
 	  movimientoTren = 0.0f;
@@ -205,20 +205,22 @@ void animate(void)
 	//Pescador
 	if (animacion_2)
 	{
-		if (movimientoPez >= 18.0f) {
+		if (movimientoPez >= 22.0f) {
 			animacion_2 = false;
 			movimientoPez = -10.0f;
+			movimientoTorso = 0.0f;
 			rotBrazoPescador = 0.0f;
 		}
 		else {
 			movimientoPez += 0.2f;
+			movimientoTorso = 1.0 * cos(variable);
 			rotBrazoPescador = 5.0*cos(variable);
 			variable += 0.5;
 		}
 	}
-
+	//Tren
 	if (animacion_3) {
-		if (movimientoTren >= 450.0f) {
+		if (movimientoTren >= 500.0f) {
 			animacion_3 = false;
 			movimientoTren = 0.0f;
 		}
@@ -226,6 +228,7 @@ void animate(void)
 			movimientoTren += 5.0;
 		}
 	}
+
 }
 
 void playMusic() {
@@ -379,7 +382,8 @@ int main()
 	Model piernas("resources/objects/Hombre/Piernas.obj");
 	Model brazoDerecho("resources/objects/Hombre/BrazoDerechoLego.obj");
 	Model brazoIzquierdo("resources/objects/Hombre/BrazoIzquierdoLego.obj");
-	Model pescador("resources/objects/Pescador/Lego.obj");
+	Model piernasPescador("resources/objects/Pescador/piernas.obj");
+	Model cuerpoPescador("resources/objects/Pescador/Lego.obj");
 	Model brazoDerPescador("resources/objects/Pescador/brazoPescador.obj");
 	Model pez("resources/objects/Pez/fish.obj");
 	Model canoa("resources/objects/Canoa/boat.obj");
@@ -387,7 +391,12 @@ int main()
 	Model rioCongelado("resources/objects/Rio/rio_congelado.obj");
 	Model canasta_baloncesto("resources/objects/Canasta_Baloncesto/Basketball_Board.obj");
 	Model balon("resources/objects/Balon/basketball_OBJ.obj");
-
+	Model baseColumpio("resources/objects/Columpio/base.obj");
+	Model asientoColumpio("resources/objects/Columpio/asiento.obj");
+	Model torsoLegoColumpio("resources/objects/Columpio/torsoLego.obj");
+	Model piernasLegoColumpio("resources/objects/Columpio/piernasLego.obj");
+	Model ventana("resources/objects/CASA_FINAL/ventana.obj");
+	Model techo("resources/objects/CASA_FINAL/techo.obj");
 
 	ModelAnim personaje_1("resources/objects/Personajes_Bailando/Personaje_1.dae");
 	personaje_1.initShaders(animShader.ID);
@@ -450,6 +459,8 @@ int main()
 		staticShader.setFloat("material_shininess", 32.0f);
 
 		glm::mat4 model = glm::mat4(1.0f);
+		glm::mat4 model2 = glm::mat4(1.0f);
+		glm::mat4 model3 = glm::mat4(1.0f);
 		glm::mat4 temporal = glm::mat4(1.0f);
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
@@ -510,6 +521,20 @@ int main()
 		staticShader.setMat4("model", model);
 		cabana.Draw(staticShader);
 
+		model3 = glm::translate(model3, glm::vec3(0.0f, -40.0f, 0.0f));
+		staticShader.setMat4("model", model3);
+		techo.Draw(staticShader);
+		//agregue esto
+		//ventana
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		model2 = glm::mat4(1.0f);
+		model2 = glm::translate(model2, glm::vec3(29.0f, 31.0f, 111.5f));
+		staticShader.setMat4("model", model2);
+		ventana.Draw(staticShader);
+		glDisable(GL_BLEND);
+		glEnable(GL_DEPTH_TEST);
+
 		//Elementos exteriores
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f));
@@ -557,6 +582,7 @@ int main()
 		espacio.Draw(staticShader);
 
 		//Hombre jugando baloncesto
+		
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(350.0f, 5.25f + posY, 350.0f));
 		temporal = model = glm::rotate(model, glm::radians(giroTorso), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
@@ -585,12 +611,17 @@ int main()
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		canasta_baloncesto.Draw(staticShader);
-
+		
 
 		//Pescador en lago congelado
 		temporal = model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
+		model = glm::rotate(model, glm::radians(movimientoTorso), glm::vec3(1.0f, 0.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		pescador.Draw(staticShader);
+		cuerpoPescador.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -1.75f, 350.0f));
+		staticShader.setMat4("model", model);
+		piernasPescador.Draw(staticShader);
 
 		model = glm::translate(temporal, glm::vec3(11.3f, 16.0f, 5.0f));
 		model = glm::rotate(model, glm::radians(rotBrazoPescador), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -612,6 +643,28 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(-150.0f, -2.0f, 350.0f));
 		staticShader.setMat4("model", model);
 		rioCongelado.Draw(staticShader);
+
+		//Columpio
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(150.0f, -1.75f, 350.0f));
+		staticShader.setMat4("model", model);
+		baseColumpio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(150.0f, 45.0f, 350.0f));
+		model = glm::rotate(model, glm::radians(posZ_2), glm::vec3(0.0f, 0.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		asientoColumpio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(155.0f + posX, -0.75f + posY, 350.0f + posZ));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		torsoLegoColumpio.Draw(staticShader);
+
+		model = glm::translate(glm::mat4(1.0f), glm::vec3(155.0f + posX, 5.25f + posY, 350.0f + posZ));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(giroTorso), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		piernasLegoColumpio.Draw(staticShader);
+
 
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Termina Escenario
@@ -703,6 +756,9 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	//Animación movimiento tren
 	if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
 		animacion_3 ^= true;
+	//Animación columpio
+	if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+		readFile("animation_two");
 	if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
 		playMusic();
 	if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
