@@ -1,7 +1,6 @@
 ﻿/*Archivo de código correspondiente al proyecto de la asignatura de CGeIHC del semestre 2022-1
 * Hernández Zamora José Enrique
 * Jiménez Gutiérrez Miguel
-* Martínez Ortíz Carlos Daniel
 */
 #include <Windows.h>
 
