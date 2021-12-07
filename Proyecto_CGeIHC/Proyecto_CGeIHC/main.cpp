@@ -396,6 +396,8 @@ int main()
 	Model asientoColumpio("resources/objects/Columpio/asiento.obj");
 	Model torsoLegoColumpio("resources/objects/Columpio/torsoLego.obj");
 	Model piernasLegoColumpio("resources/objects/Columpio/piernasLego.obj");
+	Model ventana("resources/objects/CASA_FINAL/ventana.obj");
+	Model techo("resources/objects/CASA_FINAL/techo.obj");
 
 	ModelAnim personaje_1("resources/objects/Personajes_Bailando/Personaje_1.dae");
 	personaje_1.initShaders(animShader.ID);
@@ -458,6 +460,8 @@ int main()
 		staticShader.setFloat("material_shininess", 32.0f);
 
 		glm::mat4 model = glm::mat4(1.0f);
+		glm::mat4 model2 = glm::mat4(1.0f);
+		glm::mat4 model3 = glm::mat4(1.0f);
 		glm::mat4 temporal = glm::mat4(1.0f);
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
@@ -517,6 +521,20 @@ int main()
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, -1.75f, 0.0f));
 		staticShader.setMat4("model", model);
 		cabana.Draw(staticShader);
+
+		model3 = glm::translate(model3, glm::vec3(0.0f, -40.0f, 0.0f));
+		staticShader.setMat4("model", model3);
+		techo.Draw(staticShader);
+		//agregue esto
+		//ventana
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		model2 = glm::mat4(1.0f);
+		model2 = glm::translate(model2, glm::vec3(29.0f, 31.0f, 111.5f));
+		staticShader.setMat4("model", model2);
+		ventana.Draw(staticShader);
+		glDisable(GL_BLEND);
+		glEnable(GL_DEPTH_TEST);
 
 		//Elementos exteriores
 		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
